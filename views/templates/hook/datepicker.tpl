@@ -1,10 +1,19 @@
-<p id="booking-datepicker">
-    <label>{l s='Checkin'}</label> <input type="hidden" name='booking-datepicker-checkin-text' id='booking-datepicker-checkin-text' style="width:100px;" />
-<div id="datepicker-checkin"></div>
+<div>
+    <span style='display:inline-block;'>
+        <h2>{l s='Heenreis'}</h2>
+    <input type="hidden" name='booking-datepicker-checkin-text' id='booking-datepicker-checkin-text' style="width:100px;" />
+    <div id="datepicker-checkin" style='display:inline-block'></div>
+    </span>
 {if $hasCheckOutDate}
-    <label>{l s='Checkout'}</label> <input type="hidden" name='booking-datepicker-checkout-text' id='booking-datepicker-checkout-text' style="width:100px;" />
+    <span style='display:inline-block;float:right;'>
+        <h2>{l s='Terugreis'}</h2> 
+    <input type="hidden" name='booking-datepicker-checkout-text' id='booking-datepicker-checkout-text' style="width:100px;" />
     <div id="datepicker-checkout"></div>
+    </span>
 {/if}
+</div>
+
+
 <script>
     $('document').ready(function(){
         $('#datepicker-checkin').datepicker({
@@ -63,5 +72,3 @@
 
     });
 </script>
-</p>
-

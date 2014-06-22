@@ -12,7 +12,9 @@
             altField: '#booking-datepicker-checkin-text',
             minDate: '{date('d-m-Y')}',
             onSelect: function(dateText, Obj) {
-                
+                {if $hasCheckOutDate}
+                   $('#datepicker-checkout').datepicker('option','minDate', dateText);
+                {/if}
                 
                 $.ajax({
                     url :  '{$link->getModuleLink('booking', 'Booking')}',
@@ -31,6 +33,7 @@
                 });
             }
         });
+        
         {if $hasCheckOutDate}
             $('#datepicker-checkout').datepicker({
                 inline: true,

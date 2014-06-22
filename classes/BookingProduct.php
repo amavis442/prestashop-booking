@@ -7,7 +7,7 @@
  *
  * @author patrick
  */
-class Booking extends ObjectModel
+class BookingProduct extends ObjectModel
 {
 
     //put your code here

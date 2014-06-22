@@ -4,22 +4,15 @@
  */
 if (!defined('_PS_VERSION_'))
     exit;
-include('/../../../config/config.inc.php');
 
-include(dirname(__FILE__) . '/../../classes/Booking.php');
-//use booking\models\ProductBooking;
+include(dirname(__FILE__) . '/../../classes/BookingProduct.php');
 
 class bookingBookingModuleFrontController extends ModuleFrontController
 {
-
-    public $ajax_search;
-    public $instant_search;
-    public $id_product;
-    
     public function __construct()
     {
         parent::__construct();
-        $this->className = 'Booking';
+        $this->className = 'BookingProduct';
 
         $this->context = Context::getContext();
     }
@@ -55,12 +48,12 @@ class bookingBookingModuleFrontController extends ModuleFrontController
             /* Check if there is already a record */
             $sql = sprintf('SELECT id_booking FROM '._DB_PREFIX_.'booking_product WHERE id_cart = %d AND id_product = %d',$id_cart,$id_product);
             $result = Db::getInstance()->executeS($sql);
-            $id_booking = ($result[0]['id_booking'] ? $result[0]['id_booking'] : null); 
+            $id_booking = ($result && $result[0]['id_booking'] ? $result[0]['id_booking'] : null); 
                 
-            if ($id_productbooking) {
-                $booking = new Booking($id_booking); 
+            if ($id_booking) {
+                $booking = new BookingProduct($id_booking); 
             } else {
-                $booking = new ProductBooking();
+                $booking = new BookingProduct();
                 $booking->id_product = $id_product;
                 $booking->id_cart = $id_cart;
                 $booking->token = Tools::getToken(false);

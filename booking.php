@@ -112,9 +112,10 @@ class Booking extends Module
 
     private function dropTables()
     {
-         if (!Db::getInstance()->Execute('DROP TABLE `' . _DB_PREFIX_ . 'booking_product`')) {
+        if (!Db::getInstance()->Execute('DROP TABLE `' . _DB_PREFIX_ . 'booking_product`')) {
             return false;
         }
         return true;
     }
+
 }
